@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>TaskFlow Architect</title><link rel="stylesheet" href="css/styles.css"/></head>
+<body>
+<header class="header container"><img src="images/logo.svg" alt="logo" class="logo"/><div><h1>TaskFlow Architect</h1><div class="tag">*A modern, clean-architecture approach to task management built with Python and FastAPI*</div></div><nav><a href="#overview">Overview</a><a href="#features">Features</a><a href="#architecture">Architecture</a><a href="#usage">Usage</a><a href="#api">API</a><a href="#roadmap">Roadmap</a><a href="#contributing">Contributing</a><a href="#license">License</a></nav></header>
+<main class="container"><h1>TaskFlow Architect</h1>
+<p><em>A modern, clean-architecture approach to task management built with Python and FastAPI</em></p>
+<p><a href="https://www.python.org/downloads/"><img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9+-blue.svg" /></a>
+<a href="https://fastapi.tiangolo.com/"><img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-0.68%2B-brightgreen" /></a>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a></p>
+<h2>🎯 Overview</h2>
+<p>TaskFlow Architect is a production-ready task management system that demonstrates modern software architecture principles. Built with Python and FastAPI, it showcases clean architecture, domain-driven design, and SOLID principles in a practical, real-world application.</p>
+<h3>Key Features</h3>
+<ul>
+<li>RESTful API with comprehensive documentation</li>
+<li>Clean Architecture implementation</li>
+<li>Domain-Driven Design patterns</li>
+<li>Asynchronous operations</li>
+<li>Type safety with Python type hints</li>
+<li>Comprehensive logging system</li>
+<li>In-memory repository with easy database integration</li>
+<li>Detailed API documentation with examples</li>
+</ul>
+<h2>🏗️ Architecture</h2>
+<p>The project follows Clean Architecture principles, organized in distinct layers:</p>
+<div class="codehilite"><pre><span></span><code>taskflow_architect/
+├── src/
+│   ├── domain/          # Business logic and rules
+│   ├── application/     # Use cases and DTOs
+│   └── infrastructure/  # External interfaces
+└── tests/              # Test suites
+</code></pre></div>
+
+<h3>Domain Layer</h3>
+<ul>
+<li>Core business logic</li>
+<li>Business rules and validations</li>
+<li>Entity definitions</li>
+<li>Repository interfaces</li>
+</ul>
+<h3>Application Layer</h3>
+<ul>
+<li>Use case implementations</li>
+<li>DTOs (Data Transfer Objects)</li>
+<li>Service orchestration</li>
+<li>Business workflows</li>
+</ul>
+<h3>Infrastructure Layer</h3>
+<ul>
+<li>FastAPI implementation</li>
+<li>Repository implementations</li>
+<li>Logging system</li>
+<li>External service integrations</li>
+</ul>
+<h2>🛠️ Technical Stack</h2>
+<ul>
+<li><strong>Python 3.9+</strong>: Modern Python features and type hints</li>
+<li><strong>FastAPI</strong>: High-performance web framework</li>
+<li><strong>Pydantic</strong>: Data validation using Python type annotations</li>
+<li><strong>pytest</strong>: Testing framework</li>
+<li><strong>uvicorn</strong>: ASGI server implementation</li>
+<li><strong>Python Logging</strong>: Built-in logging system</li>
+</ul>
+<h2>📦 Installation</h2>
+<ol>
+<li>Clone the repository:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/yourusername/taskflow-architect.git
+<span class="nb">cd</span><span class="w"> </span>taskflow-architect
+</code></pre></div>
+
+<ol>
+<li>Create and activate a virtual environment:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows: venv\Scripts\activate</span>
+</code></pre></div>
+
+<ol>
+<li>Install dependencies:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+
+<h2>🚀 Usage</h2>
+<h3>VS Code Setup</h3>
+<ol>
+<li>Install recommended VS Code extensions:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;recommendations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;ms-python.python&quot;</span><span class="p">,</span><span class="w">                  </span><span class="c1">// Python language support</span>
+<span class="w">        </span><span class="s2">&quot;ms-python.vscode-pylance&quot;</span><span class="p">,</span><span class="w">          </span><span class="c1">// Python type checking</span>
+<span class="w">        </span><span class="s2">&quot;ms-python.black-formatter&quot;</span><span class="p">,</span><span class="w">         </span><span class="c1">// Code formatting</span>
+<span class="w">        </span><span class="s2">&quot;njpwerner.autodocstring&quot;</span><span class="p">,</span><span class="w">           </span><span class="c1">// Python docstring generation</span>
+<span class="w">        </span><span class="s2">&quot;kevinrose.vsc-python-indent&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// Smart Python indentation</span>
+<span class="w">        </span><span class="s2">&quot;littlefoxteam.vscode-python-test-adapter&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Test Explorer UI</span>
+<span class="w">        </span><span class="s2">&quot;visualstudioexptteam.vscodeintellicode&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// AI-assisted development</span>
+<span class="w">        </span><span class="s2">&quot;christian-kohler.path-intellisense&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">// Path autocompletion</span>
+<span class="w">        </span><span class="s2">&quot;aaron-bond.better-comments&quot;</span><span class="p">,</span><span class="w">                </span><span class="c1">// Comment highlighting</span>
+<span class="w">        </span><span class="s2">&quot;ryanluker.vscode-coverage-gutters&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">// Code coverage highlighting</span>
+<span class="w">        </span><span class="s2">&quot;yzhang.markdown-all-in-one&quot;</span><span class="p">,</span><span class="w">               </span><span class="c1">// Markdown support</span>
+<span class="w">        </span><span class="s2">&quot;bierner.markdown-preview-github-styles&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// GitHub-style markdown</span>
+<span class="w">        </span><span class="s2">&quot;esbenp.prettier-vscode&quot;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// General code formatting</span>
+<span class="w">        </span><span class="s2">&quot;shardulm94.trailing-spaces&quot;</span><span class="p">,</span><span class="w">               </span><span class="c1">// Highlight trailing spaces</span>
+<span class="w">        </span><span class="s2">&quot;streetsidesoftware.code-spell-checker&quot;</span><span class="w">     </span><span class="c1">// Spell checking</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>Create <code>.vscode/tasks.json</code> for common operations:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start FastAPI Server&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${command:python.interpreterPath}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;src.main:app&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;--reload&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;8000&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;isDefault&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;panel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run Tests&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${command:python.interpreterPath}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;tests/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;-v&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;panel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Run Tests with Coverage&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${command:python.interpreterPath}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;tests/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;--cov=src&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;--cov-report=html&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;panel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Format Code&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${command:python.interpreterPath}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;src/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;tests/&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Install Dependencies&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${command:python.interpreterPath}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;pip&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;install&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;-r&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;requirements.txt&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;none&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>Create <code>.vscode/snippets/python.json</code> for code snippets:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;FastAPI Route&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;route&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;@router.${1|get,post,put,patch,delete|}(&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    \&quot;/${2:path}\&quot;,&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    response_model=${3:ResponseModel},&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    summary=\&quot;${4:Summary}\&quot;,&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    response_description=\&quot;${5:Response description}\&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;async def ${6:function_name}(&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    ${7:parameters}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;) -&gt; ${8:ReturnType}:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    \&quot;\&quot;\&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    ${9:Function description}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    \&quot;\&quot;\&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    try:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        ${0:pass}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    except Exception as error:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        raise HTTPException(&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            detail=str(error)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        )&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a FastAPI route&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Domain Entity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;entity&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;@dataclass&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;class ${1:EntityName}:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    \&quot;\&quot;\&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    ${2:Entity description}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    \&quot;\&quot;\&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    id: UUID&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    ${3:field_name}: ${4:type}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    created_at: datetime&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    updated_at: datetime&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    @classmethod&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    def create(cls, ${5:parameters}) -&gt; \&quot;${1:EntityName}\&quot;:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        now = datetime.utcnow()&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        return cls(&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            id=uuid4(),&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            ${6:field_assignments},&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            created_at=now,&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            updated_at=now&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        )&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    def update(self, ${7:parameters}) -&gt; None:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        ${0:pass}&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a domain entity&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Repository Interface&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;repo&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;class ${1:EntityName}Repository(ABC):&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    @abstractmethod&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    async def save(self, ${2:entity}: ${3:EntityType}) -&gt; None:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        pass&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    @abstractmethod&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    async def find_by_id(self, id: UUID) -&gt; Optional[${3:EntityType}]:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        pass&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    @abstractmethod&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    async def find_all(self) -&gt; List[${3:EntityType}]:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        pass&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    @abstractmethod&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    async def delete(self, id: UUID) -&gt; None:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        pass$0&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a repository interface&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Service Class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;class ${1:Name}Service:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    def __init__(self, repository: ${2:RepositoryType}):&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        self.repository = repository&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    async def create_${3:entity}(self, ${4:parameters}) -&gt; ${5:ReturnType}:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        try:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            ${0:pass}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;        except Exception as error:&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;            raise ValueError(str(error))&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a service class&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Test Function&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;prefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;@pytest.mark.asyncio&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;async def test_${1:function_name}():&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    # Arrange&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    ${2:arrangement}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    # Act&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    ${3:action}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    # Assert&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;    ${0:assertion}&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Create a test function&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>Create <code>.vscode/settings.json</code>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;python.defaultInterpreterPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/venv/bin/python&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;python.testing.pytestEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;python.testing.unittestEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;python.testing.nosetestsEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;python.testing.pytestArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;tests&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;python.formatting.provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;editor.formatOnSave&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;[python]&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;editor.formatOnSave&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;editor.codeActionsOnSave&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;source.organizeImports&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ol>
+<li>Create <code>.vscode/launch.json</code> for debugging:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python: FastAPI&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvicorn&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;src.main:app&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;--reload&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;8000&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;jinja&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;justMyCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python: Current File&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${file}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integratedTerminal&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;justMyCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Python: Tests&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-v&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;tests/&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;justMyCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>VS Code Usage</h3>
+<ol>
+<li><strong>Running the Server</strong>:</li>
+<li>Open the Debug panel (Ctrl+Shift+D / Cmd+Shift+D)</li>
+<li>Select "Python: FastAPI" from the dropdown</li>
+<li>
+<p>Press F5 or click the green play button</p>
+</li>
+<li>
+<p><strong>Debugging</strong>:</p>
+</li>
+<li>Set breakpoints by clicking left of line numbers</li>
+<li>
+<p>Use the Debug toolbar to:</p>
+<ul>
+<li>Continue (F5)</li>
+<li>Step Over (F10)</li>
+<li>Step Into (F11)</li>
+<li>Step Out (Shift+F11)</li>
+</ul>
+</li>
+<li>
+<p><strong>Running Tests</strong>:</p>
+</li>
+<li>Option 1: Using Test Explorer<ul>
+<li>Open the Testing panel (Ctrl+Shift+T / Cmd+Shift+T)</li>
+<li>Click Run All Tests or individual test buttons</li>
+</ul>
+</li>
+<li>
+<p>Option 2: Using Debug Configuration</p>
+<ul>
+<li>Select "Python: Tests" from debug dropdown</li>
+<li>Press F5 to run with debugger</li>
+</ul>
+</li>
+<li>
+<p><strong>Integrated Terminal</strong>:</p>
+</li>
+<li>Open terminal: Ctrl+<code>/ Cmd+</code></li>
+<li>
+<p>Your virtual environment should activate automatically</p>
+</li>
+<li>
+<p><strong>Code Navigation</strong>:</p>
+</li>
+<li>Go to Definition: F12</li>
+<li>Find All References: Shift+F12</li>
+<li>Quick Fix: Ctrl+. / Cmd+.</li>
+</ol>
+<h3>Starting the Server</h3>
+<p>Run the development server:</p>
+<div class="codehilite"><pre><span></span><code>uvicorn<span class="w"> </span>src.main:app<span class="w"> </span>--reload<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div>
+
+<h3>API Documentation</h3>
+<p>Access the interactive API documentation:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc</p>
+<h3>API Endpoints</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td>/api/v1/tasks/</td>
+<td>Create a new task</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/tasks/</td>
+<td>List all tasks</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/api/v1/tasks/{task_id}</td>
+<td>Get a specific task</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/api/v1/tasks/{task_id}</td>
+<td>Update a task</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/api/v1/tasks/{task_id}/assign</td>
+<td>Assign a task to a user</td>
+</tr>
+</tbody>
+</table>
+<h3>Example Requests</h3>
+<p>Create a new task:</p>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;http://localhost:8000/api/v1/tasks/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">       &quot;title&quot;: &quot;Implement new feature&quot;,</span>
+<span class="s1">       &quot;description&quot;: &quot;Add user authentication to the API&quot;,</span>
+<span class="s1">       &quot;assigned_to&quot;: &quot;987fcdeb-51k2-12d3-a456-426614174000&quot;</span>
+<span class="s1">     }&#39;</span>
+</code></pre></div>
+
+<p>List all tasks:</p>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;http://localhost:8000/api/v1/tasks/&quot;</span>
+</code></pre></div>
+
+<h2>🧪 Testing</h2>
+<p>Run the test suite:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Run all tests</span>
+pytest
+
+<span class="c1"># Run with coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>src<span class="w"> </span>tests/
+
+<span class="c1"># Run specific test file</span>
+pytest<span class="w"> </span>tests/test_task_service.py
+</code></pre></div>
+
+<h2>📖 API Documentation</h2>
+<p>The API documentation includes:</p>
+<ul>
+<li>Detailed request/response examples</li>
+<li>Interactive try-it-out functionality</li>
+<li>Schema validation information</li>
+<li>Error response examples</li>
+<li>Authentication details (if implemented)</li>
+</ul>
+<h3>Example Response</h3>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123e4567-e89b-12d3-a456-426614174000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Implement new feature&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Add user authentication to the API&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;assigned_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;987fcdeb-51k2-12d3-a456-426614174000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-16T10:00:00.000Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;updated_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-16T10:00:00.000Z&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>🔧 VS Code Troubleshooting</h2>
+<p>Common VS Code issues and solutions:</p>
+<ol>
+<li><strong>Python Interpreter Not Found</strong>
+   ```
+   Problem: VS Code can't find Python interpreter
+   Solution: </li>
+<li>Cmd/Ctrl + Shift + P</li>
+<li>"Python: Select Interpreter"</li>
+<li>
+<p>Choose the interpreter from your venv
+   ```</p>
+</li>
+<li>
+<p><strong>Debugger Not Working</strong>
+   ```
+   Problem: Breakpoints not hitting
+   Solution:</p>
+</li>
+<li>Check if you're running with debugger (F5)</li>
+<li>Verify "justMyCode": false in launch.json</li>
+<li>
+<p>Try deleting .pytest_cache directory
+   ```</p>
+</li>
+<li>
+<p><strong>Import Errors</strong>
+   ```
+   Problem: "Import could not be resolved"
+   Solution:</p>
+</li>
+<li>Verify PYTHONPATH in settings.json</li>
+<li>Restart VS Code</li>
+<li>
+<p>Rebuild IntelliSense cache:
+      Cmd/Ctrl + Shift + P -&gt; "Developer: Reload Window"
+   ```</p>
+</li>
+<li>
+<p><strong>Formatting Not Working</strong>
+   ```
+   Problem: Code not formatting on save
+   Solution:</p>
+</li>
+<li>Check if black is installed</li>
+<li>Verify formatting settings in settings.json</li>
+<li>Try manual format: Shift + Alt + F
+   ```</li>
+</ol>
+<h2>🔍 Error Handling</h2>
+<p>The API provides detailed error responses:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Task not found&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_not_found&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>🛣️ Roadmap</h2>
+<p>Future improvements planned:</p>
+<ul>
+<li>[ ] Database integration (PostgreSQL)</li>
+<li>[ ] Authentication and authorization</li>
+<li>[ ] Docker containerization</li>
+<li>[ ] Rate limiting</li>
+<li>[ ] Response caching</li>
+<li>[ ] Advanced task features (deadlines, priorities)</li>
+<li>[ ] WebSocket notifications</li>
+<li>[ ] Task commenting system</li>
+</ul>
+<h2>🤝 Contributing</h2>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch</li>
+<li>Commit your changes</li>
+<li>Push to the branch</li>
+<li>Create a Pull Request</li>
+</ol>
+<p>Please ensure your PR:
+- Includes tests
+- Updates documentation
+- Follows the existing code style
+- Includes a clear description of changes</p>
+<h2>📝 License</h2>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<h2>✨ Best Practices</h2>
+<ul>
+<li>Clean Architecture principles</li>
+<li>SOLID design principles</li>
+<li>Domain-Driven Design</li>
+<li>Type safety</li>
+<li>Comprehensive testing</li>
+<li>Detailed documentation</li>
+<li>Error handling</li>
+<li>Logging</li>
+<li>API versioning</li>
+</ul>
+<h2>💡 Tips for Development</h2>
+<ol>
+<li>Use the interactive API documentation for testing</li>
+<li>Check the examples in the documentation</li>
+<li>Follow the existing code structure</li>
+<li>Run tests before submitting changes</li>
+<li>Keep the architecture layers separate</li>
+</ol>
+<h2>📚 Additional Resources</h2>
+<ul>
+<li><a href="https://fastapi.tiangolo.com/">FastAPI Documentation</a></li>
+<li><a href="https://docs.python.org/3/library/typing.html">Python Type Hints</a></li>
+<li><a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Architecture</a></li>
+<li><a href="https://martinfowler.com/bliki/DomainDrivenDesign.html">Domain-Driven Design</a></li>
+</ul>
+<h2>🤔 Questions?</h2>
+<p>Feel free to:
+1. Open an issue
+2. Start a discussion
+3. Submit a pull request
+4. Contact the maintainers</p>
+<section id="license"><h2>License</h2><p>MIT License</p></section>
+<footer class="container"><p>Generated site for TaskFlow Architect</p></footer>
+</main></body></html>
