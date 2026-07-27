@@ -1,0 +1,108 @@
+{
+    "FastAPI Route": {
+        "prefix": "route",
+        "body": [
+            "@router.${1|get,post,put,patch,delete|}(",
+            "    \"/${2:path}\",",
+            "    response_model=${3:ResponseModel},",
+            "    summary=\"${4:Summary}\",",
+            "    response_description=\"${5:Response description}\"",
+            ")",
+            "async def ${6:function_name}(",
+            "    ${7:parameters}",
+            ") -> ${8:ReturnType}:",
+            "    \"\"\"",
+            "    ${9:Function description}",
+            "    \"\"\"",
+            "    try:",
+            "        ${0:pass}",
+            "    except Exception as error:",
+            "        raise HTTPException(",
+            "            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,",
+            "            detail=str(error)",
+            "        )"
+        ],
+        "description": "Create a FastAPI route"
+    },
+    "Domain Entity": {
+        "prefix": "entity",
+        "body": [
+            "@dataclass",
+            "class ${1:EntityName}:",
+            "    \"\"\"",
+            "    ${2:Entity description}",
+            "    \"\"\"",
+            "    id: UUID",
+            "    ${3:field_name}: ${4:type}",
+            "    created_at: datetime",
+            "    updated_at: datetime",
+            "",
+            "    @classmethod",
+            "    def create(cls, ${5:parameters}) -> \"${1:EntityName}\":",
+            "        now = datetime.utcnow()",
+            "        return cls(",
+            "            id=uuid4(),",
+            "            ${6:field_assignments},",
+            "            created_at=now,",
+            "            updated_at=now",
+            "        )",
+            "",
+            "    def update(self, ${7:parameters}) -> None:",
+            "        ${0:pass}"
+        ],
+        "description": "Create a domain entity"
+    },
+    "Repository Interface": {
+        "prefix": "repo",
+        "body": [
+            "class ${1:EntityName}Repository(ABC):",
+            "    @abstractmethod",
+            "    async def save(self, ${2:entity}: ${3:EntityType}) -> None:",
+            "        pass",
+            "",
+            "    @abstractmethod",
+            "    async def find_by_id(self, id: UUID) -> Optional[${3:EntityType}]:",
+            "        pass",
+            "",
+            "    @abstractmethod",
+            "    async def find_all(self) -> List[${3:EntityType}]:",
+            "        pass",
+            "",
+            "    @abstractmethod",
+            "    async def delete(self, id: UUID) -> None:",
+            "        pass$0"
+        ],
+        "description": "Create a repository interface"
+    },
+    "Service Class": {
+        "prefix": "service",
+        "body": [
+            "class ${1:Name}Service:",
+            "    def __init__(self, repository: ${2:RepositoryType}):",
+            "        self.repository = repository",
+            "",
+            "    async def create_${3:entity}(self, ${4:parameters}) -> ${5:ReturnType}:",
+            "        try:",
+            "            ${0:pass}",
+            "        except Exception as error:",
+            "            raise ValueError(str(error))"
+        ],
+        "description": "Create a service class"
+    },
+    "Test Function": {
+        "prefix": "test",
+        "body": [
+            "@pytest.mark.asyncio",
+            "async def test_${1:function_name}():",
+            "    # Arrange",
+            "    ${2:arrangement}",
+            "",
+            "    # Act",
+            "    ${3:action}",
+            "",
+            "    # Assert",
+            "    ${0:assertion}"
+        ],
+        "description": "Create a test function"
+    }
+}
