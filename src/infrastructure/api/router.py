@@ -5,6 +5,7 @@ from typing import Dict, Any
 from typing import List, Optional
 from uuid import UUID
 from ...application.controllers.task_controller import TaskController
+from ...application.dtos.task_dto import CreateTaskDTO, UpdateTaskDTO
 from .models import CreateTaskRequest, UpdateTaskRequest, TaskResponse
 from .dependencies import get_controller
 from ...domain.entities.task import TaskStatus
@@ -68,10 +69,15 @@ router = APIRouter(
 async def create_task(
     request: CreateTaskRequest = Body(
         ...,
-        example={
-            "title": "Implement new feature",
-            "description": "Add user authentication to the API",
-            "assigned_to": "987fcdeb-51k2-12d3-a456-426614174000"
+        examples={
+            "default": {
+                "summary": "Create a task",
+                "value": {
+                    "title": "Implement new feature",
+                    "description": "Add user authentication to the API",
+                    "assigned_to": "987fcdeb-51k2-12d3-a456-426614174000"
+                }
+            }
         }
     ),
     controller: TaskController = Depends(get_controller)
@@ -84,8 +90,13 @@ async def create_task(
     - **assigned_to**: Optional UUID of the user to assign the task to
     """
     try:
-        task = await controller.create_task(request.dict())
-        return TaskResponse.from_orm(task)
+        dto = CreateTaskDTO(
+            title=request.title,
+            description=request.description,
+            assigned_to=request.assigned_to,
+        )
+        task = await controller.create_task(dto)
+        return TaskResponse.model_validate(task)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -112,7 +123,7 @@ async def create_task(
                         "title": "Fix bug in login",
                         "description": "Address issue with password reset",
                         "status": "PENDING",
-                        "assigned_to": null,
+                        "assigned_to": None,
                         "created_at": "2024-01-16T11:00:00.000Z",
                         "updated_at": "2024-01-16T11:00:00.000Z"
                     }]
@@ -137,7 +148,7 @@ async def list_tasks(
     if assigned_to:
         tasks = [task for task in tasks if task.assigned_to == assigned_to]
         
-    return [TaskResponse.from_orm(task) for task in tasks]
+    return [TaskResponse.model_validate(task) for task in tasks]
 
 @router.get(
     "/{task_id}",
@@ -154,7 +165,7 @@ async def get_task(
     """
     try:
         task = await controller.get_task(task_id)
-        return TaskResponse.from_orm(task)
+        return TaskResponse.model_validate(task)
     except ValueError:
         raise HTTPException(status_code=404, detail="Task not found")
 
@@ -178,8 +189,9 @@ async def update_task(
     - **assigned_to**: Optional new assigned user UUID
     """
     try:
-        task = await controller.update_task(task_id, request.dict(exclude_unset=True))
-        return TaskResponse.from_orm(task)
+        dto = UpdateTaskDTO(**request.model_dump(exclude_unset=True))
+        task = await controller.update_task(task_id, dto)
+        return TaskResponse.model_validate(task)
     except ValueError:
         raise HTTPException(status_code=404, detail="Task not found")
 
@@ -199,7 +211,7 @@ async def assign_task(
     """
     try:
         task = await controller.assign_task(task_id, user_id)
-        return TaskResponse.from_orm(task)
+        return TaskResponse.model_validate(task)
     except ValueError:
         raise HTTPException(status_code=404, detail="Task not found")
 
@@ -218,7 +230,8 @@ async def update_task_status(
     Update the status of a specific task.
     """
     try:
-        task = await controller.update_task(task_id, {"status": status})
-        return TaskResponse.from_orm(task)
+        dto = UpdateTaskDTO(status=status)
+        task = await controller.update_task(task_id, dto)
+        return TaskResponse.model_validate(task)
     except ValueError:
         raise HTTPException(status_code=404, detail="Task not found")

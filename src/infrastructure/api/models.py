@@ -1,5 +1,5 @@
 # src/infrastructure/api/models.py
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import Optional
 from uuid import UUID
 from datetime import datetime
@@ -31,14 +31,16 @@ class CreateTaskRequest(BaseModel):
     description: str = Field(..., min_length=1, max_length=1000, description="Task description")
     assigned_to: Optional[UUID] = Field(None, description="UUID of the assigned user")
 
-    @validator('title')
+    @field_validator('title')
+    @classmethod
     def title_must_not_be_empty(cls, v):
         v = v.strip()
         if not v:
             raise ValueError('Title must not be empty')
         return v
 
-    @validator('description')
+    @field_validator('description')
+    @classmethod
     def description_must_not_be_empty(cls, v):
         v = v.strip()
         if not v:
@@ -74,7 +76,8 @@ class UpdateTaskRequest(BaseModel):
     status: Optional[TaskStatus] = Field(None)
     assigned_to: Optional[UUID] = Field(None)
 
-    @validator('title')
+    @field_validator('title')
+    @classmethod
     def title_must_not_be_empty(cls, v):
         if v is not None:
             v = v.strip()
@@ -82,7 +85,8 @@ class UpdateTaskRequest(BaseModel):
                 raise ValueError('Title must not be empty')
         return v
 
-    @validator('description')
+    @field_validator('description')
+    @classmethod
     def description_must_not_be_empty(cls, v):
         if v is not None:
             v = v.strip()
@@ -102,9 +106,4 @@ class TaskResponse(BaseModel):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat(),
-            UUID: lambda v: str(v)
-        }
+    model_config = ConfigDict(from_attributes=True)
